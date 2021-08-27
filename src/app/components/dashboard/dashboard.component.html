@@ -1,7 +1,6 @@
 <!-- Top navigation -->
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0">
-    <img class="brand-logo" src="assets/logo-positronx-white.svg" alt="positronX.io Logo">
   </a>
 </nav>
 
@@ -12,24 +11,33 @@
     <nav class="col-md-2 d-md-block bg-light sidebar">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active">
+          <li class="nav-item"  (click)="selezionato(0)">
+            <a class="nav-link" [ngClass]="{'active': getSelezionato() == 0}">
               <i class="fas fa-user"></i>User Profile
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" [ngClass]="{'active': getSelezionato() == 1}" (click)="selezionato(1)">
+              <i class="fas fa-edit"></i>Menu
+            </a>
+          </li>
+
           <!-- Calling SignOut() Api from AuthService -->
           <li class="nav-item">
             <a class="nav-link" (click)="authService.SignOut()">
               <i class="fas fa-sign-out-alt"></i>Log out
             </a>
           </li>
+          
+
         </ul>
       </div>
     </nav>
 
     <!-- Main content -->
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div class="inner-adjust">
+      <div class="inner-adjust" *ngIf="getSelezionato() == 0">
 
         <div class="pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2">User Profile</h1>
@@ -50,6 +58,9 @@
           </div>
         </div>
 
+      </div>
+      <div class="inner-adjust" *ngIf="getSelezionato() == 1">
+        <p>menu funxiona</p>
       </div>
     </main>
 

@@ -8,6 +8,7 @@ import { ForgotPasswordComponent } from '../../components/forgot-password/forgot
 import { VerifyEmailComponent } from '../../components/verify-email/verify-email.component';
 
 import { AuthGuard } from "../../shared/guard/auth.guard";
+import { UnoComponent } from 'src/app/components/mia/uno/uno.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full'},
@@ -15,7 +16,9 @@ const routes: Routes = [
   { path: 'register-user', component: SignUpComponent},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'verify-email-address', component: VerifyEmailComponent }
+  { path: 'verify-email-address', component: VerifyEmailComponent },
+  { path: 'uno', component: UnoComponent },
+  
 ];
 
 @NgModule({
